@@ -76,30 +76,7 @@ Memoraq AI solves this by converting messy decision inputs into a structured dec
 
 ## Architecture
 
-```text
-User Input
-    |
-    v
-Streamlit UI
-    |
-    v
-Input Evaluator
-    |
-    v
-Prompt Builder
-    |
-    v
-Gemini API
-    |
-    v
-Generated Decision Memo
-    |
-    v
-Output Parser
-    |
-    v
-Streamlit Result Tabs + PDF Export
-```
+<img width="1307" height="455" alt="memoraq_architecture" src="https://github.com/user-attachments/assets/42a03809-347e-40e9-b149-19f176dee980" />
 
 ### Component Overview
 
@@ -265,13 +242,10 @@ The app generates a structured decision memo containing:
 
 ## Screenshots / Demo
 
-Add screenshots, demo GIFs, or deployment links here.
+<img width="1177" height="848" alt="app_working_gif" src="https://github.com/user-attachments/assets/130c8612-0cf0-4e3d-9e56-931c2b04898f" />
 
-```text
-[Add screenshot here]
-[Add demo GIF here]
-[Add deployed app link here]
-```
+<img width="1148" height="847" alt="memoraq_ouput" src="https://github.com/user-attachments/assets/276cb2df-99ad-4e16-9636-8fd447fb207c" />
+
 
 ## Model / Logic Explanation
 
