@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Memoraq AI
 
 Memoraq AI is a Streamlit-based AI application that helps users turn unclear decisions into structured decision memos. The app collects decision context, evaluates input quality, generates a balanced memo using the Gemini API, highlights the recommendation in a clean interface, and exports a polished PDF report.
@@ -364,3 +365,6 @@ To contribute:
 ## License
 
 This project is MIT Licensed.
+=======
+# Memoraq-AI: A Memo Generator for Decision Making 
+>>>>>>> 4d09753106f179b2703616c4ae94255ac69d18e5
