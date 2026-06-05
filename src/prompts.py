@@ -13,6 +13,7 @@ def build_decision_prompt(decision_topic, situation, constraints, options, confu
     - Compare options fairly.
     - Provide a practical recommendation.
     - Include a confidence level: Low, Medium, or High.
+    - Keep the recommendation concise enough that a busy person can understand it quickly.
     - If the user has not provided enough information, still provide a useful preliminary recommendation but clearly state the limitations.
 
     User Input:
@@ -42,19 +43,39 @@ def build_decision_prompt(decision_topic, situation, constraints, options, confu
 
     ## 3. Key Assumptions
 
-    ## 4. Option Comparison
+    ## 4. Option Scoring Matrix
+
+    Use this exact markdown table format. Score each category from 1 to 10.
+    Higher is better for Goal Fit, Long-term Value, and Confidence.
+    Lower is better for Time Cost, Risk, and Effort Required.
+
+    | Option | Goal Fit | Time Cost | Risk | Effort Required | Long-term Value | Confidence |
+    | --- | --- | --- | --- | --- | --- | --- |
+    | Option A | score | score | score | score | score | score |
+    | Option B | score | score | score | score | score | score |
+
+    After the table, add 2-3 short bullets explaining the scores.
+
+    ## 5. Option Comparison
 
     Use a simple table.
 
-    ## 5. Risks and Trade-offs
+    ## 6. Risks and Trade-offs
 
-    ## 6. Recommendation
+    ## 7. Recommendation
 
-    ## 7. Confidence Level
+    ## 8. Confidence Level
 
-    ## 8. What Could Change This Decision
+    ## 9. What Could Change This Decision
 
-    ## 9. Suggested Next Action
+    ## 10. Suggested Next Action
+
+    ## 11. Decision Stress Test
+
+    Briefly challenge your own recommendation. Include:
+    - How this recommendation could be wrong
+    - The strongest reason to choose another option
+    - One signal the user should watch before committing
 
     # Reasoning Quality Check
 
