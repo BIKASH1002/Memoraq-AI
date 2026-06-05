@@ -52,7 +52,7 @@ Memoraq AI solves this by converting messy decision inputs into a structured dec
   - `reportlab` for PDF generation
   - `pytest` for testing
 - **Database:** None
-- **Deployment:** [Add deployed link or platform here]
+- **Deployment:** streamlit cloud
 
 ## Project Workflow
 
