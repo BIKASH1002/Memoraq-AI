@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+from google.genai.errors import APIError
+
 from src.prompts import build_decision_prompt
 from src.llm_client import generate_decision_memo
 from src.evaluator import evaluate_user_input
@@ -379,6 +381,7 @@ if submitted:
                     st.write(f"- {suggestion}")
 
         loading_placeholder = st.empty()
+        retry_placeholder = st.empty()
         loading_placeholder.markdown(
             """
             <div class="analysis-loader">
@@ -410,8 +413,16 @@ if submitted:
                 confusion
             )
 
-            result = generate_decision_memo(prompt)
+            result = generate_decision_memo(
+                prompt,
+                on_retry=lambda attempt, max_retries, delay: retry_placeholder.warning(
+                    f"The AI service is busy. Retrying automatically "
+                    f"({attempt}/{max_retries}) in {delay} second"
+                    f"{'s' if delay != 1 else ''}..."
+                ),
+            )
             loading_placeholder.empty()
+            retry_placeholder.empty()
             result = clean_output(result)
 
             section_check = check_required_sections(result)
@@ -508,7 +519,17 @@ if submitted:
                 width="stretch"
             )
 
-        except Exception as e:
+        except APIError as error:
             loading_placeholder.empty()
-            st.error("Something went wrong while generating the memo.")
-            st.exception(e)
+            retry_placeholder.empty()
+            if error.code in {429, 503}:
+                st.error(
+                    "The AI service is still busy after two automatic retries. "
+                    "Please try generating the memo again in a moment."
+                )
+            else:
+                st.error("Something went wrong while generating the memo. Please try again.")
+        except Exception:
+            loading_placeholder.empty()
+            retry_placeholder.empty()
+            st.error("Something went wrong while generating the memo. Please try again.")
